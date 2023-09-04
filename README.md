@@ -8,4 +8,8 @@ DFRobot TFT screen https://www.dfrobot.com/product-1784.html?tracking=hOuIhw4fDa
 2 plastic foot
 3d printed parts https://cults3d.com/en/3d-model/gadget/the-walk-a-machine-to-walk-maps 
 
+# Demo
+https://www.youtube.com/watch?v=2kpLPy73JuQ
 
+# Contact
+@RoniBandini
