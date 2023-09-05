@@ -190,7 +190,7 @@ while True:
         print("Destination address: "+myDestinationAddress)
 
     	# get route map
-        imgURL = "https://maps.googleapis.com/maps/api/staticmap?size="+resolution+"&path="+myLatStart+","+myLongStart+"|"+myLatEnd+","+myLongEnd+"&markers=size:mid%7Ccolor:red%7C"+myLatEnd+","+myLongEnd+"&key=AIzaSyAtjYwonSkJGp47A8yFVaD0D0C9WBukWBo"
+        imgURL = "https://maps.googleapis.com/maps/api/staticmap?size="+resolution+"&path="+myLatStart+","+myLongStart+"|"+myLatEnd+","+myLongEnd+"&markers=size:mid%7Ccolor:red%7C"+myLatEnd+","+myLongEnd+"&key="+googleMapsAPI
         myRouteFileName="/home/roni/images/route-"+str(filename)+"-"+str(myCounter)+".jpg"
         urllib.request.urlretrieve(imgURL, myRouteFileName)
 
@@ -199,7 +199,7 @@ while True:
         writeCoordinates(myLatEnd+','+myLongEnd)
 
     	# take destination picture
-        imgURL = "https://maps.googleapis.com/maps/api/streetview?size="+resolution+"&location="+myLatEnd+","+myLongEnd+"&fov=80&heading=0&source=outdoor&pitch=0&key=AIzaSyAtjYwonSkJGp47A8yFVaD0D0C9WBukWBo"
+        imgURL = "https://maps.googleapis.com/maps/api/streetview?size="+resolution+"&location="+myLatEnd+","+myLongEnd+"&fov=80&heading=0&source=outdoor&pitch=0&key="+googleMapsAPI
         mySnapFileName="/home/roni/images/snap-"+str(filename)+"-"+str(myCounter)+".jpg"
         urllib.request.urlretrieve(imgURL, mySnapFileName)
 
