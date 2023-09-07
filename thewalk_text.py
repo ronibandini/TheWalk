@@ -32,19 +32,19 @@ window_name = 'map'
 up_width 	= 800
 up_height 	= 480
 
-webMapUrl       ="http://yourWeb.com/thewalk/"
+webMapUrl       ="http://yoursite.com/thewalk/"
 
 # Weather API
 BASE_URL    = "https://api.openweathermap.org/data/2.5/weather?"
-API_KEY     = "000000000000"
+API_KEY     = "000000"
 
 # Google Maps API
-googleMapsAPI='000000000000'
+googleMapsAPI='000000'
 api 		= Directions(api_key=googleMapsAPI)
 resolution	="400x400" # 800x480
 
 # ChatGPT
-openai.api_key  = "000000000000"
+openai.api_key  = "000000"
 model_engine    = "text-davinci-003"
 temperatura     = 0.8
 
@@ -98,19 +98,15 @@ def get_point_at_distance(lat1, lon1, d, bearing, R=6371):
 # Walk
 def walk(myDistance):
 
-    try:
-        while myDistance>0:
-            rightFoot.min()
-            leftFoot.min()
-            sleep(0.5)
-            rightFoot.mid()
-            leftFoot.mid()
-            sleep(0.5)
-            myDistance=myDistance-1
-            print("Walking...")
-    except KeyboardInterrupt:
-        print("Exit")
-        sys.exit(0)
+    while myDistance>0:
+        rightFoot.min()
+        leftFoot.min()
+        sleep(0.5)
+        rightFoot.mid()
+        leftFoot.mid()
+        sleep(0.5)
+        myDistance=myDistance-1
+        print("Walking. Meters to go: "+str(myDistance))
 
 
 def escribirDiario(myFecha,myClima,myDistancia,myDestino, myCantidadDePalabras):
