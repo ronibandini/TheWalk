@@ -7,6 +7,7 @@
 
 from gmaps import Directions, Geocoding
 import urllib.request
+from urllib.request import urlretrieve
 import cv2
 from PIL import Image
 from haversine import haversine, Unit
@@ -31,6 +32,12 @@ window_name = 'map'
 up_width 	= 800
 up_height 	= 480
 
+webMapUrl       ="http://yourWeb.com/thewalk/"
+
+# Weather API
+BASE_URL    = "https://api.openweathermap.org/data/2.5/weather?"
+API_KEY     = "000000000000"
+
 # Google Maps API
 googleMapsAPI='000000000000'
 api 		= Directions(api_key=googleMapsAPI)
@@ -41,9 +48,7 @@ openai.api_key  = "000000000000"
 model_engine    = "text-davinci-003"
 temperatura     = 0.8
 
-# Weather API
-BASE_URL    = "https://api.openweathermap.org/data/2.5/weather?"
-API_KEY     = "000000000000"
+
 
 def writeLog(myLine):
     dt = datetime.now()
@@ -138,6 +143,9 @@ def getDateAndTime():
     dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
     return dt_string
 
+def updateWeb(myLat, myLong):
+    print("Updating web map coordinates")
+    thing = urlretrieve(webMapUrl+"coordinates.php?lat="+myLat+"&lng="+myLong)
 
 print("The Walk")
 print("@RoniBandini, September 2023")
@@ -195,8 +203,10 @@ while True:
         urllib.request.urlretrieve(imgURL, myRouteFileName)
 
         walk(myDistance)
+        #walk(10)
 
         writeCoordinates(myLatEnd+','+myLongEnd)
+        updateWeb(myLatEnd, myLongEnd)
 
     	# take destination picture
         imgURL = "https://maps.googleapis.com/maps/api/streetview?size="+resolution+"&location="+myLatEnd+","+myLongEnd+"&fov=80&heading=0&source=outdoor&pitch=0&key="+googleMapsAPI
